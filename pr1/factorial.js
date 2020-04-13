@@ -4,11 +4,6 @@
 13.04.2020
 */
 function factorial(n) {
-<<<<<<< HEAD
-    if (n < 0 || isNaN(n)) return -1 // Проверяет корректно ли число N и возвращает -1, если нет
-    else if (n <= 1) return 1        // Если число меньше единицы возвращает 1
-    else return n * factorial(n-1);  // Иначе вернуть число N умноженное на факториал N - 1
-=======
     // console.log("i=",i++);
     // console.log(i + "! = " + factorial(i));
     // debugger;
@@ -27,14 +22,10 @@ function factorial(n) {
         console.info('%i! = %i', i, result);                    // Ввыод факториала числа i в консоль разработчика
     }
     return result;                      // Возвращение результата вычислений функции
->>>>>>> 6ceceac2fbbe564a5aa87c9465d9bb9b2993acc1
 }
 
 let x = factorial(5);                // Создали переменную x, записали выполнения функции factorial
 alert(x);                            // Вывели всплывающее окно со значением переменной x
-<<<<<<< HEAD
-document.write(x);                   // Вывели значение переменной x в html документ
-=======
 document.write(x);                   // Вывели значение переменной x в html документ
 
 factorial(-1);
@@ -48,4 +39,3 @@ function div(a, b) {
 
 div(2, 3);
 div(2, 0);
->>>>>>> 6ceceac2fbbe564a5aa87c9465d9bb9b2993acc1

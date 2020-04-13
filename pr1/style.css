@@ -1,0 +1,10 @@
+#id1 {
+    width: 760px;
+    height: 1000px;
+    background-color: aqua;
+}
+#id2 {
+    width: 240px;
+    height: 760px;
+    background-color: red;
+}

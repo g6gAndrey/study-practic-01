@@ -1,8 +1,39 @@
-/* 
-Считает факториал, делая проверку на кореектные исходные данные.
-Кондратов Андрей Дмитриевич
-13.04.2020
-*/
+function today()
+{
+    let NameMonth, NameDate;
+    data = new Date();
+    year = data.getFullYear();
+    month = data.getMonth();
+    date = data.getDate();
+    day = data.getDay();
+    switch(month)
+    {
+        case 0: {NameMonth = "Январь"; break;}
+        case 1: {NameMonth = "Февраль"; break;}
+        case 2: {NameMonth = "Март"; break;}
+        case 3: {NameMonth = "Апрель"; break;}
+        case 4: {NameMonth = "Май"; break;}
+        case 5: {NameMonth = "Июнь"; break;}
+        case 6: {NameMonth = "Июль"; break;}
+        case 7: {NameMonth = "Авуст"; break;}
+        case 8: {NameMonth = "Сентябрь"; break;}
+        case 9: {NameMonth = "Октябрь"; break;}
+        case 10:{ NameMonth = "Ноябрь"; break;}
+        case 11:{ NameMonth = "Декабрь"; break;}
+    }
+    switch(day)
+    {
+        case 0:{ NameDate = "Воскресенье"; break;}
+        case 1:{ NameDate = "Понедельник"; break;}
+        case 2:{ NameDate = "Вторник"; break;}
+        case 3:{ NameDate = "Среда"; break;}
+        case 4:{ NameDate = "Четверг"; break;}
+        case 5:{ NameDate = "Пятница"; break;}
+        case 6:{ NameDate = "Суббота"; break;}
+    }
+    alert(date + " " + NameMonth + " " + year + " " + NameDate);
+}
+
 function factorial(n) {
     // console.log("i=",i++);
     // console.log(i + "! = " + factorial(i));
@@ -24,18 +55,18 @@ function factorial(n) {
     return result;                      // Возвращение результата вычислений функции
 }
 
-let x = factorial(5);                // Создали переменную x, записали выполнения функции factorial
-alert(x);                            // Вывели всплывающее окно со значением переменной x
-document.write(x);                   // Вывели значение переменной x в html документ
+document.write(factorial(5));
 
-factorial(-1);
-factorial(0);
-factorial(5);
-
-function div(a, b) {
-    if (b == 0) console.error("Деление на ноль невозможно!!!")
-    else return a / b;
+function timer(sec)
+{
+    let min = 0;
+    while (sec >= 60)
+    {
+        min++;
+        sec -= 60;
+    }
+    sec = String(sec).length == 1 ? '0' + sec : sec;
+    alert(min + ":" + sec);
 }
 
-div(2, 3);
-div(2, 0);
+timer(120);

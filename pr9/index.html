@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#hideAll").click(() => $("p").hide())
+            $("#butHide").click(function() {$(this).hide()})
+            $("#p1Hide").click(() => $("#p1").hide())
+            $("#p2Hide").click(() => $("#p2").hide())
+            $("#testHide").click(() => $(".test").hide())
+            $("#paragrafsShow").click(() => $("p").show())
+            $("#showAll").click(() => $("*").show())
+        })
+    </script>
+</head>
+<body>
+    <h2 class = "test">Заголовок страницы</h2>
+    <p id = "p1">Первый абзац</p>
+    <p id = "p2" class = "test">Второй абзац</p>
+    <button id = "hideAll">Скрыть все абзацы</button>
+    <button id = "butHide">Скрыть кнопку</button>
+    <button id = "p1Hide">Скрыть 1 абзац</button>
+    <button id = "p2Hide">Скрыть 2 абзац</button>
+    <button id = "testHide">Скрыть все элементы класса Test</button>
+    <button id = "paragrafsShow">Показать все абзацы</button>
+    <button id = "showAll">Показать все</button>
+
+</body>
+</html>

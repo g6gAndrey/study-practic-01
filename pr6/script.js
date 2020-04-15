@@ -50,3 +50,25 @@ function deletePartOfArray(n) {
         ).concat(array1.slice(Math.floor(array1.length / 2) + Math.ceil(n / 2))).join(", ")
     );
 }
+
+//4
+function sort(array) {
+    console.log((array.sort((el1, el2) => {
+        if (el1 > el2) return 1
+        else if (el1 < el2) return -1
+        else return 0
+    })).join(", "))
+    console.log((array.sort((el1, el2) => {
+        if (el1 > el2) return -1
+        else if (el1 < el2) return 1
+        else return 0
+    })).join(", "))
+}
+//5
+function sortString(array) {
+    console.log((array.sort((el1, el2) => {
+        if (el1.toLowerCase() > el2.toLowerCase()) return 1
+        else if (el1.toLowerCase() < el2.toLowerCase()) return -1
+        else return 0
+    })).join(", "))
+}

@@ -24,3 +24,12 @@ function passwordCheck(password) {
     if ((/(?=.*[0-9])(?=.*[!_.?])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,}/g).test(password)) return true;
     else false;
 }
+
+function censorship(str) {
+    const search = /(редиск[а-я]{1,2}|нехорош[а-я]{2,3}\sчеловек[а-я]{0,2})/g;
+    const cens = "🤩";
+
+    return str.replace(search, cens);
+}
+
+document.write(censorship("редиску gfd нехорошим человек gdfg редиск"));

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+    <link rel="stylesheet" href="styleEx3.css">
+    <script>
+        $(document).ready(function() {
+            $(".blocks_p").text($("p").css("font-size"));
+            $("#plus").click(function(){
+                console.log(Number($("p").css("font-size").match(/[0-9]+/)[0])+2+'px');
+                $("p").css("font-size", Number($("p").css("font-size").match(/[0-9]+/)[0])+2+'px');
+                $(".blocks_p").text($("p").css("font-size"));
+            })
+            $("#minus").click(function(){
+                console.log(Number($("p").css("font-size").match(/[0-9]+/)[0])+2+'px');
+                $("p").css("font-size", Number($("p").css("font-size").match(/[0-9]+/)[0])-2+'px');
+                $(".blocks_p").text($("p").css("font-size"));
+            })
+        })
+    </script>
+    <title>Document</title>
+</head>
+<body>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Assumenda ipsam maiores iste adipisci ducimus minus quia temporibus error id animi nulla, provident sit nemo. Voluptatum soluta provident voluptates aperiam maxime.</p>
+    <div class="blocks blocks_plus" id="plus">A+</div>
+    <div class="blocks blocks_p"></p></div>
+    <div class="blocks blocks_minus" id="minus">A-</div>
+</body>
+</html>

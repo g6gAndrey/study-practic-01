@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("tr:even").css("background-color","gray");         
+            $("#paintInGreen").click(function() {
+                $("tr:odd").css("background-color","green");
+            })
+            $("tr").click(function() {
+                if ($(this).css("background-color") != "rgb(255, 255, 0)") {
+                    $(this).css("background-color","yellow");
+                    console.log($(this).css("background-color"));
+                }
+                else $(this).css("background-color","white");
+            })
+        })
+    </script>
+    <title>Document</title>
+</head>
+<body>
+    <table border="1px">
+        <tr id="test">
+            <td> test </td>
+            <td> test </td>
+        </tr>
+        <tr>
+            <td> test </td>
+            <td> test </td>
+        </tr>
+        <tr>
+            <td> test </td>
+            <td> test </td>
+        </tr>
+        <tr>
+            <td> test </td>
+            <td> test </td>
+        </tr>
+        <tr>
+            <td> test </td>
+            <td> test </td>
+        </tr>
+    </table>
+    <button id = "paintInGreen">Окрасить в зеленный</button>
+</body>
+</html>

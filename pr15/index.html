@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <input type="button" value="Показать результат" id="resultButton">
+        <input type="reset" value="Очистить" id="clearButton">
+        <input type="text" id="hereResilts" readonly>
+        <p id="p1">Первый вопрос.</p>
+        <p><input id="trueq1" type="radio" name="q1">Ответ 1</p>
+        <p><input type="radio" name="q1">Ответ 2</p>
+        <p><input type="radio" name="q1">Ответ 3</p>
+        <p id="p2">Второй вопрос.</p>
+        <input id="trueq2" type="radio" name="q2"><img src="photo1.jpg" width="100px" height="50px"><img> <br>
+        <input type="radio" name="q2"><img src="photo2.jpg" width="100px" height="50px"><img> <br>
+        <input type="radio" name="q2"><img src="photo3.jpg" width="100px" height="50px"><img>
+        <p id="p3"> Третий вопрос.</p>
+        <select id="selectId">
+            <option id="trueq3">Ответ 1</option>
+            <option>Ответ 2</option>
+            <option>Ответ 3</option>
+            <option>Ответ 4</option>
+        </select>
+        <p id="p4">Четверный вопрос.</p>
+        <p><input id="trueq4a" type="checkbox" name="q4">Ответ 1</p>
+        <p><input id="trueq4b" type="checkbox" name="q4">Ответ 2</p>
+        <p><input type="checkbox" name="q4">Ответ 3</p>
+    </form>
+    <script >
+        document.querySelector("#resultButton").addEventListener("click", () => {
+            let bals = 0;
+            if (document.querySelector("#trueq1").checked == true) {
+                bals++;
+                document.querySelector("#p1").style.backgroundColor = "green";
+            }
+            else document.querySelector("#p1").style.backgroundColor = "red";
+            if (document.querySelector("#trueq2").checked == true) {
+                bals++;
+                document.querySelector("#p2").style.backgroundColor = "green";
+            }
+            else document.querySelector("#p2").style.backgroundColor = "red";
+            var n = document.getElementById("selectId").options.selectedIndex;
+            if (n == 0) {
+                bals++;
+                document.querySelector("#p3").style.backgroundColor = "green";
+            }
+            else document.querySelector("#p3").style.backgroundColor = "red";
+            if (document.querySelector("#trueq4a").checked == true) bals += 0.5;
+            if (document.querySelector("#trueq4b").checked == true) bals += 0.5;
+            if (document.querySelector("#trueq4a").checked == true && document.querySelector("#trueq4b").checked == true) document.querySelector("#p4").style.backgroundColor = "green";
+            else document.querySelector("#p4").style.backgroundColor = "red";
+            document.querySelector("#hereResilts").value = String(bals);
+        })
+        document.querySelector("#clearButton").addEventListener("click", () => {
+            document.querySelector("#p1").style.backgroundColor = "white";
+            document.querySelector("#p2").style.backgroundColor = "white";
+            document.querySelector("#p3").style.backgroundColor = "white";
+            document.querySelector("#p4").style.backgroundColor = "white";
+        })
+    </script>
+</body>
+</html>

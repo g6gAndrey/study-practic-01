@@ -1,0 +1,28 @@
+.block {
+    width: 30vw;
+    height: 30vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    font-size: 32px;
+}
+
+.block:nth-child(1) {
+    background-color: aquamarine;
+}
+
+.block:nth-child(2) {
+    background-color: cadetblue;
+}
+
+.block:nth-child(3) {
+    background-color: darkcyan;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}

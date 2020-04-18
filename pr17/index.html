@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html {
+            -ms-user-select: none;
+            -moz-user-select: none;
+            -khtml-user-select: none;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+        #timePi, #scorePi {
+            background-color: transparent;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // Переход на окно ПРИВЕТСТВИЯ
+        window.document.body.innerHTML = "<p> Инструкция </p>" +
+                                         "<input id='loginHere'></input>" +
+                                         "<button id='gameStart' disabled>Играть</button>";
+        document.querySelector("#loginHere").addEventListener("change", () => {
+            if (document.querySelector("#loginHere").value) document.querySelector("#gameStart").removeAttribute('disabled');
+            else document.querySelector("#gameStart").setAttribute('disabled', "true");
+        })
+        //
+        document.querySelector("#gameStart").addEventListener("click", function gameWindow() {
+            if (document.querySelector("#loginHere").value != "tester")
+            {
+            let login = document.querySelector("#loginHere").value;
+            let score = 0;
+            var now = new Date();
+            var fromStart = new Date();
+            // Переход на окно ИГРОВОЙ ЭКРАН
+            window.document.body.innerHTML = "<p> Логин: " + login + "</p>" +
+                                             "<label for='timePi'> Время: </label>" + 
+                                             "<input id='timePi' value='00:00' disabled type='text'> <br>" +
+                                             "<label for='scorePi'> Счет: </label>" +
+                                             "<input id='scorePi' value='" + score + "' disabled type='number'> <br>" +
+                                              "<button id='exitFromGame'>Выход</button>" +
+                                              "<div id='round' style='border-radius: 50%; background-image: radial-gradient(yellow 0%,red 100%); width: 50px; height: 50px; position: fixed; top: calc(50vh - 25px); left: calc(50% - 25px)'> </div>"
+                                              ;
+            document.querySelector("body").style.backgroundColor ="lightyellow";
+            setInterval(() => {
+                const nowTime = Math.floor((new Date() - fromStart) / 1000);
+                const min = Math.floor(nowTime / 60);
+                const sec = nowTime % 60;
+                document.querySelector("#timePi").value = (min < 10 ? '0' + min : min) + ":" + (sec < 10 ? '0' + sec : sec);
+            }, 1000);
+            document.querySelector("#round").addEventListener("click", () => { document.querySelector("#scorePi").value = score += 5; })
+            document.querySelector("#round").addEventListener("contextmenu", (event) => {
+                event.preventDefault();
+                document.querySelector("#scorePi").value = score += 10; 
+            })
+            // Переход на окно результаты                                  
+                document.querySelector("#exitFromGame").addEventListener("click", function recordsWindow() {
+                    document.querySelector("body").style.backgroundColor ="white";
+                    window.document.body.innerHTML = 'Результаты: '
+                })
+            }
+            else 
+            {
+                let login = document.querySelector("#loginHere").value;
+                let score = 0;
+                var now = new Date();
+                var fromStart = new Date();
+                // Переход на окно ИГРОВОЙ ЭКРАН
+                window.document.body.innerHTML = "<p style='text-decoration: underline;'> Логин: " + login + "</p>" +
+                                                "<label for='scorePi'> Счет: </label>" +
+                                                "<input id='scorePi' value='" + score + "' disabled type='number'> <br>" +
+                                                "<button id='exitFromGame'>Выход</button>" +
+                                                "<div id='round' style='border-radius: 50%; background-image: radial-gradient(yellow 0%,red 100%); width: 50px; height: 50px; position: fixed; top: calc(50vh - 25px); left: calc(50% - 25px)'> </div>"
+                                                ;
+                document.querySelector("body").style.backgroundColor ="lightcoral";
+                document.querySelector("#round").addEventListener("click", () => { document.querySelector("#scorePi").value = score += 5; })
+                document.querySelector("#round").addEventListener("contextmenu", (event) => {
+                    event.preventDefault();
+                    document.querySelector("#scorePi").value = score += 10; 
+
+                document.querySelector("#exitFromGame").addEventListener("click", function recordsWindow() {
+                    document.querySelector("body").style.backgroundColor ="white";
+                    window.document.body.innerHTML = 'Результаты: '
+                })
+                })
+                // Переход на окно результаты                                  
+                document.querySelector("#exitFromGame").addEventListener("click", function recordsWindow() {
+                    document.querySelector("body").style.backgroundColor ="white";
+                    window.document.body.innerHTML = 'Результаты: '
+                })
+            }
+        })
+/////////////////////////////////////////////////
+    </script>
+</body>
+</html>

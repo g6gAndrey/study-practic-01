@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="cookieDelet">Удаление.</button>
+    <script type="text/javascript">
+        function parseCookie()   // Разделение cookie
+        {
+            var cookieList = document.cookie.split("; ");
+            console.log("Куки лист: " + cookieList);
+            var cookieArray = new Array();
+            for (var i = 0; i < cookieList.length; i++) {
+                var name = cookieList[i].split("=");
+                cookieArray[unescape(name[0])] = unescape(name[1]);
+            }
+            return cookieArray;
+        }
+        function setCookie(visits, login) {
+            var expireDate = new Date();
+            var today = new Date();
+            expireDate.setMinutes(5 + expireDate.setMinutes()); // Ограничение на 5 минут
+            document.cookie = "visits=" + visits +
+                "; expires=" + expireDate.toGMTString() + ";";
+            document.cookie = "LastVisit=" + escape(today.toGMTString()) +
+                "; expires=" + expireDate.toGMTString() + ";";
+            document.cookie = "Login=" + login +
+                "; expires=" + expireDate.toGMTString() + ";";
+            console.log(document.cookie);
+        }
+
+        if ("" == document.cookie) {
+            let rvLogin = /^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$/;
+            var newInput = document.createElement('input');
+            newInput.id = "tempInput";
+            document.body.appendChild(newInput);
+            var newButton = document.createElement('button');
+            newButton.id = "tempButton";
+            document.body.appendChild(newButton);
+            document.querySelector("#tempButton").addEventListener("click", () => {
+                if (rvLogin.test(document.querySelector("#tempInput").value))
+                {
+                    setCookie(1, document.querySelector("#tempInput").value);
+                    document.write("<H3>Поздравляю Вас с первым посещением моего сайта.</H3>");
+                }
+            })
+        }
+        else {
+            var cookies = parseCookie();
+            document.write("<H4>Мы снова рады видеть Вас на моем сайте! Число лично ваших посещений - " +
+                cookies.visits++ + " !</H4>");
+            document.write("<H4>Последний раз Вы были у меня на сайте: " + cookies.LastVisit + ".</H4>");
+            document.write("Ваш логин: " + cookies.Login);
+            setCookie(isNaN(cookies.visits) ? 1 : cookies.visits, cookies.Login);
+        }
+
+        document.querySelector("#cookieDelet").addEventListener("click", function CookiesDelete() {
+            var cookies = document.cookie.split(";");
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i];
+                var eqPos = cookie.indexOf("=");
+                var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+                document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;";
+                document.cookie = name + '=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+            }
+        })
+    </script>
+</body>
+
+</html>

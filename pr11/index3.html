@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<head>
+	<link rel="stylesheet" href="style2.css">
+	<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+	<script>
+		$(document).ready(function() 
+		{
+			var canvas = document.getElementById('canvas');
+			var ctx = canvas.getContext('2d');
+			var circles = [];
+			function Circle(x,y,color,dx,dy)
+			{
+				this.x = x;
+				this.y = y;
+				this.color = color;
+				this.dx = dx;
+				this.dy = dy;
+			}
+			function drawBall(circle) 
+			{
+				ctx.beginPath();
+				ctx.arc(circle.x, circle.y, 10, 0, Math.PI*2);
+				ctx.fillStyle = circle.color;
+				ctx.fill();
+				ctx.closePath();
+			}
+			function addNewCircle() 
+			{
+				var dx = Math.round(Math.random()*14+1);
+				var dy = Math.round(Math.random()*14+1);
+				var colors = ["green", "blue", "red", "yellow", "magenta", "orange", "brown", "purple", "pink"];
+				var x = Math.round(Math.random()*570+30);
+				var y = Math.round(Math.random()*270+30);
+				var myCircle = new Circle(x,y,colors[Math.round(Math.random()*8)], dx,dy);
+				circles.push(myCircle);
+			}
+			function createMass(n)
+			{
+				for (let i = 0; i < n; i++) 
+					addNewCircle();
+			}
+			function fun() 
+			{
+				ctx.clearRect(0, 0, canvas.width, canvas.height);
+				for (let i = 0; i < circles.length; i++) 
+				{
+					drawBall(circles[i]);
+					if(circles[i].x + circles[i].dx > canvas.width-10 || circles[i].x + circles[i].dx < 10) 
+						circles[i].dx = -1*circles[i].dx;
+					if(circles[i].y + circles[i].dy > canvas.height-10 || circles[i].y + circles[i].dy < 10) 
+						circles[i].dy = -1*circles[i].dy;
+					circles[i].x += circles[i].dx;
+					circles[i].y += circles[i].dy;
+				}
+			}
+			var x = prompt('Введите кол-во шаров',"");
+			createMass(x);
+			setInterval(fun,20);
+		});
+	</script>
+</head>	
+<body>
+	<canvas id="canvas" width="600" height="400"></canvas>
+</body>
